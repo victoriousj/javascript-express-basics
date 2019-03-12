@@ -3,12 +3,28 @@ const express = require("express");
 const app = express();
 app.set("view engine", "pug");
 
+const colors = [
+  "red",
+  "blue",
+  "green",
+  "yellow",
+  "pink",
+  "orange",
+  "gray",
+  "white",
+  "black"
+];
+
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/hello", (req, res) => {
-  res.send("<h1>hello homey</h1>");
+app.get("/card", (req, res) => {
+  res.render("card", {
+    prompt: "Who is bured in Grand's Tomb?",
+    hint: "think who's tomb it is",
+    colors: colors
+  });
 });
 
 app.listen(3000, () => {
